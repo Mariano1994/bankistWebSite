@@ -30,6 +30,7 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+// COOKIE MESSAGE
 const message = document.createElement("div");
 message.classList.add("cookie-message");
 
@@ -46,4 +47,12 @@ header.append(message);
 const closeCookie = document.querySelector(".btn--close--cookie");
 closeCookie.addEventListener("click", () => {
   message.remove();
+});
+
+// SCROLLING TO FUNTION
+const btnScrollto = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
+
+btnScrollto.addEventListener("click", () => {
+  section1.scrollIntoView({ behavior: "smooth" });
 });
