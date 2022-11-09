@@ -1,12 +1,20 @@
 "use strict";
 
-///////////////////////////////////////
-// Modal window
-
+// ELEMENTS SELECTIONS
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".btn--close-modal");
 const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
+
+const message = document.createElement("div");
+
+const btnScrollto = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
+
+document.querySelectorAll(".nav__link");
+
+///////////////////////////////////////
+// Modal window
 
 const openModal = function () {
   modal.classList.remove("hidden");
@@ -31,7 +39,6 @@ document.addEventListener("keydown", function (e) {
 });
 
 // COOKIE MESSAGE
-const message = document.createElement("div");
 message.classList.add("cookie-message");
 
 message.textContent = "We use cookied for improved functionality and analytics";
@@ -39,7 +46,7 @@ message.innerHTML =
   'we use cookied for improved functionality and analytics. <button class = "btn btn--close--cookie"> Got it!</button>';
 
 message.style.background = "#37383d";
-message.style.width = "120%";
+message.style.width = "110%";
 message.style.height = "8rem";
 const header = document.querySelector(".header");
 header.append(message);
@@ -49,10 +56,16 @@ closeCookie.addEventListener("click", () => {
   message.remove();
 });
 
-// SCROLLING TO FUNTION
-const btnScrollto = document.querySelector(".btn--scroll-to");
-const section1 = document.querySelector("#section--1");
-
+// SCROLLING BUTTON
 btnScrollto.addEventListener("click", () => {
   section1.scrollIntoView({ behavior: "smooth" });
+});
+
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+  e.preventDefault();
+
+  if (e.target.classList.contains("nav__link")) {
+    const id = e.target.getAttribute("href");
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+  }
 });
