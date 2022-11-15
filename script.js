@@ -45,22 +45,22 @@ document.addEventListener("keydown", function (e) {
 });
 
 // COOKIE MESSAGE
-message.classList.add("cookie-message");
+// message.classList.add("cookie-message");
 
-message.textContent = "We use cookied for improved functionality and analytics";
-message.innerHTML =
-  'we use cookied for improved functionality and analytics. <button class = "btn btn--close--cookie"> Got it!</button>';
+// message.textContent = "We use cookied for improved functionality and analytics";
+// message.innerHTML =
+//   'we use cookied for improved functionality and analytics. <button class = "btn btn--close--cookie"> Got it!</button>';
 
-message.style.background = "#37383d";
-message.style.width = "110%";
-message.style.height = "8rem";
-const header = document.querySelector(".header");
-header.append(message);
+// message.style.background = "#37383d";
+// message.style.width = "110%";
+// message.style.height = "8rem";
+// const header = document.querySelector(".header");
+// header.append(message);
 
-const closeCookie = document.querySelector(".btn--close--cookie");
-closeCookie.addEventListener("click", () => {
-  message.remove();
-});
+// const closeCookie = document.querySelector(".btn--close--cookie");
+// closeCookie.addEventListener("click", () => {
+//   message.remove();
+// });
 
 // SCROLLING BUTTON
 btnScrollto.addEventListener("click", () => {
@@ -115,3 +115,27 @@ const handleHover = function (e) {
 
 nav.addEventListener("mouseover", handleHover.bind(0.5));
 nav.addEventListener("mouseout", handleHover.bind(1));
+
+// STICKY NAV
+const header = document.querySelector(".header");
+const navHeight = nav.getBoundingClientRect().height;
+console.log(navHeight);
+
+const stickyNav = function (entries) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) {
+    nav.classList.add("sticky");
+  } else {
+    nav.classList.remove("sticky");
+  }
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`,
+});
+
+headerObserver.observe(header);
+`${navHeight}`;
