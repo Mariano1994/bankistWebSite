@@ -195,9 +195,6 @@ const slider = document.querySelector(".slider");
 let currSlide = 0;
 const maxSlide = slides.length - 1;
 
-// slider.style.transform = `scale(0.5) translateX(-800px)`;
-// slider.style.overflow = `visible`;
-
 const goToSlide = function (slide) {
   slides.forEach(
     (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
@@ -227,3 +224,25 @@ const prevSlide = function () {
 
 btnRight.addEventListener("click", nextSlide);
 btnLeft.addEventListener("click", prevSlide);
+
+// MOVING USING KEYS
+document.addEventListener("keydown", function (e) {
+  if (e.key === "ArrowLeft") {
+    prevSlide();
+  }
+  if (e.key === "ArrowRight") {
+    nextSlide();
+  } else {
+  }
+});
+let dotContainner;
+// Creating Dots
+const createDots = function () {
+  slides.forEach(function (e, i) {
+    dotContainner.insertAdjacentHTML(
+      "beforeend",
+      `<button class="dots__dot" data-slide="${i}"></button> `
+    );
+  });
+};
+createDots();
