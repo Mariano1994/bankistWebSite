@@ -210,6 +210,7 @@ const nextSlide = function () {
   }
 
   goToSlide(currSlide);
+  activeDot(currSlide);
 };
 
 const prevSlide = function () {
@@ -220,19 +221,19 @@ const prevSlide = function () {
   }
 
   goToSlide(currSlide);
+  activeDot(currSlide);
 };
 
 btnRight.addEventListener("click", nextSlide);
 btnLeft.addEventListener("click", prevSlide);
 
 // MOVING USING KEYS
-document.addEventListener("keydown", function (e) {
+document.addEventListener("keydown", function (e, i) {
   if (e.key === "ArrowLeft") {
     prevSlide();
   }
   if (e.key === "ArrowRight") {
     nextSlide();
-  } else {
   }
 });
 
@@ -248,9 +249,22 @@ const createDots = function () {
 };
 createDots();
 
+// Activeting the dots
+function activeDot(slide) {
+  document
+    .querySelectorAll(".dots__dot")
+    .forEach((dot) => dot.classList.remove("dots__dot--active"));
+
+  document
+    .querySelector(`.dots__dot[data-slide="${slide}"]`)
+    .classList.add("dots__dot--active");
+}
+
+activeDot(0);
 dotContainer.addEventListener("click", function (e) {
   if (e.target.classList.contains("dots__dot")) {
     const { slide } = e.target.dataset;
     goToSlide(slide);
+    activeDot(slide);
   }
 });
