@@ -235,14 +235,22 @@ document.addEventListener("keydown", function (e) {
   } else {
   }
 });
-let dotContainner;
+
 // Creating Dots
+const dotContainer = document.querySelector(".dots");
 const createDots = function () {
-  slides.forEach(function (e, i) {
-    dotContainner.insertAdjacentHTML(
+  slides.forEach(function (_, i) {
+    dotContainer.insertAdjacentHTML(
       "beforeend",
       `<button class="dots__dot" data-slide="${i}"></button> `
     );
   });
 };
 createDots();
+
+dotContainer.addEventListener("click", function (e) {
+  if (e.target.classList.contains("dots__dot")) {
+    const { slide } = e.target.dataset;
+    goToSlide(slide);
+  }
+});
