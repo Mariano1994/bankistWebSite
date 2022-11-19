@@ -45,22 +45,22 @@ document.addEventListener("keydown", function (e) {
 });
 
 // COOKIE MESSAGE
-message.classList.add("cookie-message");
+// message.classList.add("cookie-message");
 
-message.textContent = "We use cookied for improved functionality and analytics";
-message.innerHTML =
-  'we use cookied for improved functionality and analytics. <button class = "btn btn--close--cookie"> Got it!</button>';
+// message.textContent = "We use cookied for improved functionality and analytics";
+// message.innerHTML =
+//   'we use cookied for improved functionality and analytics. <button class = "btn btn--close--cookie"> Got it!</button>';
 
-message.style.background = "#37383d";
-message.style.width = "110%";
-message.style.height = "8rem";
-const headern = document.querySelector(".header");
-headern.append(message);
+// message.style.background = "#37383d";
+// message.style.width = "110%";
+// message.style.height = "8rem";
+// const headern = document.querySelector(".header");
+// headern.append(message);
 
-const closeCookie = document.querySelector(".btn--close--cookie");
-closeCookie.addEventListener("click", () => {
-  message.remove();
-});
+// const closeCookie = document.querySelector(".btn--close--cookie");
+// closeCookie.addEventListener("click", () => {
+//   message.remove();
+// });
 
 // SCROLLING BUTTON
 btnScrollto.addEventListener("click", () => {
